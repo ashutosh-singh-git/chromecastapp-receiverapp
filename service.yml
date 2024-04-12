@@ -1,0 +1,49 @@
+app:
+  name: chromecastapp
+  kind: static
+  region: us-east-1
+  environments:
+    dev:
+      bucketName: chromecastapp-dev
+      bucketPath: /
+    preprod:
+      bucketName: chromecastapp-preprod
+      bucketPath: /
+    prod:
+      bucketName: chromecastapp
+      bucketPath: /
+  buildPath: /app/dist
+
+actions:
+  dev:
+  - key: cloudfrontInvalidate
+    metrics:
+    - key: distributionID
+      value: E3QWI4AXXSSS9D
+    - key: invalidationPath
+      value: /
+  preprod:
+  - key: cloudfrontInvalidate
+    metrics:
+    - key: distributionID
+      value: E3NWDD1C1KDAV0
+    - key: invalidationPath
+      value: /
+  prod:
+  - key: cloudfrontInvalidate
+    metrics:
+    - key: distributionID
+      value: E1QGF4DSP8EYZ2
+    - key: invalidationPath
+      value: /
+
+dockerEnvironments:
+  dev:
+  - key: environment
+    value: dev
+  preprod:
+  - key: environment
+    value: preprod
+  prod:
+  - key: environment
+    value: prod

@@ -1,0 +1,37 @@
+{
+  "name": "chromecastapp-receiverapp",
+  "version": "1.0.0",
+  "description": "chromecast receiver app",
+  "private": true,
+  "scripts": {
+    "test": "none",
+    "build": "webpack",
+    "start": "webpack-dev-server --open",
+    "start-preprod": "webpack-dev-server --env.NODE_ENV=preprod --open",
+    "start-prod": "webpack-dev-server --env.NODE_ENV=prod --open",
+    "build-local": "webpack",
+    "build-dev": "webpack --env.NODE_ENV=dev",
+    "build-preprod": "webpack --env.NODE_ENV=preprod",
+    "build-prod": "webpack --env.NODE_ENV=prod "
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "abid",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.2",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "dotenv": "^8.2.0"
+  }
+}

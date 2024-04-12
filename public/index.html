@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cast Reference Receiver</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha1.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+    <script type="text/javascript"
+            src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+
+</head>
+<body style="margin: 0">
+<div id="player" class="player">
+    <div class="media">
+        <video></video>
+    </div>
+    <div class="logo"></div>
+    <div class="home_sc"></div>
+    <div class="spinner"></div>
+    <!--<div class="watermark"></div>-->
+    <div class="gradient"></div>
+    <div class="overlay">
+        <div class="media-info">
+            <div class="media-artwork"></div>
+            <div class="media-text">
+                <div class="media-title"></div>
+                <div class="media-subtitle"></div>
+            </div>
+        </div>
+        <div class="preview-mode-info">
+            <div class="preview-mode-artwork"></div>
+            <div class="preview-mode-text">
+                <div class="preview-mode-timer">
+                    <div class="preview-mode-timer-starts">Up next in&nbsp;</div>
+                    <div class="preview-mode-timer-countdown"></div>
+                    <div class="preview-mode-timer-sec">&nbsp;secs...</div>
+                </div>
+                <div class="preview-mode-title"></div>
+                <div class="preview-mode-subtitle"></div>
+            </div>
+        </div>
+        <div class="controls">
+            <span class="controls-play-pause"></span>
+            <span class="controls-cur-time"></span>
+            <div class="controls-progress">
+                <div class="controls-progress-inner progressBar"></div>
+                <div class="controls-progress-thumb"></div>
+            </div>
+            <span class="controls-total-time"></span>
+
+        </div>
+
+    </div>
+    <script type="module" src="main.js"></script>
+</div>
+</body>
+</html>

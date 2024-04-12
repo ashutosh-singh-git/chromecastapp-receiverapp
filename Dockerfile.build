@@ -1,0 +1,17 @@
+FROM 536123028970.dkr.ecr.ap-south-1.amazonaws.com/nodejs:lts-alpine
+
+ARG environment
+
+WORKDIR /app
+# install and cache app dependencies
+COPY . /app
+
+RUN pwd
+RUN npm cache clean --force
+RUN yarn cache clean
+RUN rm -rf node_modules package-lock.json yarn.lock
+RUN npm config set unsafe-perm true
+
+RUN npm install
+
+RUN npm run build-${environment}

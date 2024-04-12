@@ -1,0 +1,545 @@
+
+/* NOTE: this must be first statement in file to work on device */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+
+/* ------------------------------------------------- */
+/* Animations                                        */
+/* ------------------------------------------------- */
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@-webkit-keyframes loading {
+  0% { margin-left: -100%; }
+  100% { margin-left: 100%; }
+}
+
+/* ------------------------------------------------- */
+/* Player                                            */
+/* ------------------------------------------------- */
+
+body {
+  background-color: #000;
+}
+
+.player {
+  background-color: rgb(0, 0, 0);
+  color: #f1f1f1;
+  font-family: 'Open Sans',sans-serif;
+  font-weight: 300;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.player .home_sc{
+  display: none;
+  background-image: url("../common/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #f1f1f1;
+  font-family: 'Open Sans',sans-serif;
+  font-weight: 300;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.player .logo {
+  display: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  background-image: url("../common/logo.png");
+  margin-bottom: -96px;
+  margin-left: -96px;
+  width: 222px;
+  height: 222px;
+}
+
+.player .placeholder-image {
+  background-image: url("../common/placeholder-audio.jpg");
+}
+
+.player .gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.player img, .player video {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: fill;
+}
+
+.player .media-info {
+  padding-bottom: 65px;
+  display: flex;
+  overflow: hidden;
+}
+
+.player .media-artwork {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-size: cover;
+  border-radius: 5%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 160px;
+  margin-right: 32px;
+  min-width: 115px;
+  max-width: 115px;
+  width: 100%;
+}
+
+.player .media-text {
+  width: 100%;
+  align-self: flex-end;
+}
+
+.player .media-info .media-title {
+  position: relative;
+  color: rgba(255, 255, 255);
+  font-size: 35px;
+  white-space: nowrap;
+  left: 138px;
+  bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
+.player .media-info .media-subtitle {
+  color: rgba(168, 167, 167, 0.8);
+  font-size: 20px;
+  position: relative;
+  left: 138px;
+  bottom: 12px;
+  overflow: hidden;
+  width: 80%;
+}
+
+.player .media-info .media-subtitle span:not(:first-child):before {
+  content: '\00B7';
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.player .controls {
+  display: none;
+  bottom: 25px;
+  height: 30px;
+  left: 138px;
+  position: absolute;
+  right: 0;
+}
+
+.player .controls-play-pause {
+  background-size: cover;
+  border: 0;
+  bottom: 75px;
+  right: -23px;
+  position: absolute;
+  float: right;
+  height: 39px;
+  width: 40px;
+}
+
+.player .overlay {
+  position: absolute;
+  left: 50px;
+  bottom: 30px;
+  right: 100px;
+  display: none;
+  top: auto;
+}
+
+.player .watermark {
+  position: absolute;
+  top: 64px;
+  left: 64px;
+  bottom: 64px;
+  right: 64px;
+  display: none;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  margin-bottom: 54px;
+  background-image: url("../common/watermark.png");
+}
+
+.player .gradient {
+  display: none;
+  opacity: 0.9;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1.0),
+    rgba(0, 0, 0, 0.0) 72%,
+    rgba(0, 0, 0, 0.0) 100%
+  );
+}
+
+.player .progressBar {
+  cursor: pointer;
+  background-color: rgba(255, 0, 0);
+  height: 3px;
+}
+
+.player .controls-progress {
+  background-color: rgb(255, 255, 255);
+  height: 3px;
+  margin-top: 11px;
+  margin-right: 55px;
+  margin-left: 60px;
+  margin-bottom: 11px;
+}
+
+.player .controls-progress-inner {
+  height: 3px;
+  opacity: 0.8;
+  left: 0;
+  right: 0;
+  position: relative;
+}
+
+.player .controls-progress-thumb {
+  height: 16px;
+  width: 16px;
+  background-color: rgba(255, 0, 0);
+  position: relative;
+  bottom: 11px;
+  border-radius: 50%;
+  margin-left: -3px;
+}
+
+.player .controls-cur-time,
+.player .controls-total-time {
+  color: rgba(255, 255, 255);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.player .controls-cur-time {
+  float: left;
+  line-height: 26px;
+  margin-left: 0px;
+  margin-right: 15px;
+}
+
+.player .controls-total-time {
+  float: right;
+  top: 0;
+  right: -20px;
+  position: absolute;
+}
+
+.player .preview-mode-info {
+  padding-bottom: 54px;
+  display: none;
+  margin: -143px 0 0 0;
+  overflow: hidden;
+}
+
+.player .preview-mode-artwork {
+  background-image: url("../common/logo.png");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  align-self: flex-end;
+  height: 143px;
+  margin-right: 32px;
+  min-width: 96px;
+  max-width: 266px;
+  width: 100%;
+}
+
+.player .preview-mode-info .preview-mode-text {
+  width: 100%;
+  align-self: flex-end;
+}
+
+.player .preview-mode-info .preview-mode-title {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+}
+
+.player .preview-mode-info .preview-mode-subtitle {
+  color: rgba(203, 203, 203, 0.8);
+  font-size: 22px;
+  overflow: hidden;
+  width: 80%;
+}
+
+.player .preview-mode-info .preview-mode-subtitle span:not(:first-child):before {
+  content: '\00B7';
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.player .preview-mode-info .preview-mode-timer {
+  display: flex;
+  color: rgb(250, 178, 49);
+  font-size: 22px;
+  overflow: hidden;
+  width: 80%;
+}
+
+.player .preview-mode-info .preview-mode-timer-starts {
+  font-weight: bold;
+}
+
+/* ------------------------------------------------- */
+/* Player - Video                                    */
+/* ------------------------------------------------- */
+
+/* ------------------------------------------------- */
+/* Player - Video - Launching                        */
+/* ------------------------------------------------- */
+
+.player[type="video"][state="launching"] .overlay {
+  display: block;
+}
+
+.player[type="video"][state="launching"] .logo {
+  display: block;
+  visibility: visible;
+}
+
+.player[type="video"][state="launching"] .controls,
+.player[type="video"][state="launching"] .media-info,
+.player[type="video"][state="launching"] .media-artwork {
+  display: none;
+}
+
+.player[type="video"][state="launching"] .spinner {
+  -webkit-animation: spin 1s infinite linear;
+  height: 30px;
+  width: 30px;
+  display: block;
+  background-size: cover;
+  border: 0;
+  position: absolute;
+  background-image: url("../common/buffering.png");
+  bottom: 64px;
+  left: 50%;
+}
+
+/* ------------------------------------------------- */
+/* Player - Video - Loading                          */
+/* ------------------------------------------------- */
+
+.player[type="video"][state="loading"] .overlay,
+.player[type="video"][state="loading"] .controls,
+.player[type="video"][state="loading"] .watermark {
+  visibility: visible;
+  display: block;
+}
+.player[type="video"][state="loading"] .controls-progress{
+  overflow: hidden;
+}
+
+.player[type="video"][state="loading"] .controls-cur-time,
+.player[type="video"][state="loading"] .controls-total-time,
+.player[type="video"][state="loading"] .controls-progress-thumb,
+.player[type="video"][state="loading"] .controls-play-pause {
+  visibility: visible;
+  display: none;
+}
+
+.player[type="video"][state="loading"] .controls-progress-inner {
+  width: 90% !important;
+  margin-left: 165px;
+  -webkit-animation: loading 2s infinite linear;
+}
+
+/* ------------------------------------------------- */
+/* Player - Video - Buffering                        */
+/* ------------------------------------------------- */
+
+.player[type="video"][state="buffering"] .overlay,
+.player[type="video"][state="buffering"] .gradient {
+  display: block;
+  visibility: visible;
+}
+
+.player[type="video"][state="buffering"] .gradient {
+  opacity: 0.1;
+}
+
+.player[type="video"][state="buffering"] .media-artwork,
+.player[type="video"][state="buffering"] .media-info {
+  display: visible;
+}
+
+.player[type="video"][state="buffering"] .controls {
+  display: block;
+}
+
+.player[type="video"][state="buffering"] .controls-play-pause {
+  background-image: url("../common/buffering.png");
+  -webkit-animation: spin 1s infinite linear;
+}
+
+.player[type="video"][state="buffering"] video {
+  display: block;
+}
+
+/*.player[type="video"][state="buffering"] .media-info,*/
+.player[type="video"][state="buffering"]:not(.seeking) .media-info
+.player[type="video"][state="buffering"]:not(.seeking) .controls-cur-time,
+.player[type="video"][state="buffering"]:not(.seeking) .controls-total-time,
+.player[type="video"][state="buffering"]:not(.seeking) .controls-progress {
+  display: visible;
+}
+
+
+/* ------------------------------------------------- */
+/* Player - Video - Paused                           */
+/* ------------------------------------------------- */
+
+.player[type="video"][state="paused"] .overlay,
+.player[type="video"][state="paused"] .gradient,
+.player[type="video"][state="paused"] .watermark {
+  display: block;
+  visibility: visible;
+}
+
+.player[type="video"][state="paused"] .controls-play-pause {
+  background-image: url("../common/paused.png");
+}
+
+.player[type="video"][state="paused"] .controls,
+.player[type="video"][state="paused"] .watermark,
+.player[type="video"][state="paused"]:not(.seeking) .controls-cur-time,
+.player[type="video"][state="paused"]:not(.seeking) .controls-total-time,
+.player[type="video"][state="paused"]:not(.seeking) .controls-progress {
+  display: block;
+}
+
+.player[type="video"][state="paused"][live="true"] .controls-cur-time,
+.player[type="video"][state="paused"][live="true"] .controls-total-time,
+.player[type="video"][state="paused"][live="true"] .controls-progress {
+  display: none !important;
+}
+
+.player[type="video"][state="paused"] video {
+  display: block;
+}
+
+.player[type="video"][state="paused"]:not(.seeking) .controls-cur-time,
+.player[type="video"][state="paused"]:not(.seeking) .controls-total-time,
+.player[type="video"][state="paused"]:not(.seeking) .controls-progress {
+  opacity: 1;
+  -webkit-transition: opacity 1s linear 5s;
+}
+
+.player[type="video"][state="paused"] .media-info {
+  opacity: 1;
+  -webkit-transition: opacity 1s linear 5s;
+}
+
+.player[type="video"][state="paused"] .gradient {
+  opacity: 0.1;
+  -webkit-transition: opacity 1s linear 5s;
+}
+
+/* ------------------------------------------------- */
+/* Player - Video - Playing                          */
+/* ------------------------------------------------- */
+
+.player[type="video"][state="playing"] .overlay,
+.player[type="video"][state="playing"] .gradient,
+.player[type="video"][state="playing"] .watermark {
+  display: block;
+  visibility: hidden;
+}
+
+.player[type="video"][state="playing"].seeking .overlay,
+.player[type="video"][state="playing"].seeking .gradient {
+  display: block;
+  visibility: none;
+}
+.player[type="video"][state="playing"].seeking .media-play,
+.player[type="video"][state="playing"].seeking .media-info {
+  display: block;
+  visibility: none;
+}
+
+.player[type="video"][state="playing"].seeking .controls {
+  display: block;
+}
+
+/*.player[type="video"][state="playing"] .controls-play-pause {
+  background-image: url("../common/buffering.png");
+  -webkit-animation: spin 1s infinite linear;
+}*/
+
+.player[type="video"][state="playing"]:not(.seeking) .controls-play-pause {
+  display: none;
+}
+
+.player[type="video"][state="playing"]:not(.seeking) .controls-cur-time {
+  margin-left: 0;
+}
+
+
+.player[type="video"][state="playing"] video {
+  display: block;
+}
+
+
+/* ------------------------------------------------- */
+/* Player - Idle                                     */
+/* ------------------------------------------------- */
+
+.player[state="idle"] .overlay {
+  display: none;
+}
+
+.player[state="idle"] .logo {
+  display: block;
+}
+
+.player[state="idle"] .spinner {
+  display: none;
+}
+.player[state="idle"] .home_sc {
+  display: block;
+  visibility: visible;
+}
+
+/* ------------------------------------------------- */
+/* Player - Done                                     */
+/* ------------------------------------------------- */
+
+.player[state="done"] .overlay {
+  display: none;
+}
+
+.player[state="done"] {
+  background-image: url('../common/done.png');
+}
